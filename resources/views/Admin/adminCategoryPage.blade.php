@@ -93,7 +93,7 @@
                 @else
                 @foreach ($showCategory as $item)
                 <tr>
-               <td>{{ $item->id }}</td>
+               <td>{{ $item->category_id }}</td>
                <td>{{ $item->category_name }}</td>
                <td>1</td>
                 {{-- <td>
@@ -106,8 +106,8 @@
                   @endif
                 </td> --}}
                   <td>
-                 <a href="{{ route('categoryUpdate',$item->id) }}">  <button class="btn btn-sm bg-dark text-white"><i class="fas fa-edit"></i></button></a>
-                   <a href="{{ route('categoryDelete',$item->id) }}"><button class="btn btn-sm bg-danger text-white"><i class="fas fa-trash-alt"></i></button></a>
+                 <a href="{{ route('categoryUpdate',$item->category_id) }}">  <button class="btn btn-sm bg-dark text-white"><i class="fas fa-edit"></i></button></a>
+                   <a href="{{ route('categoryDelete',$item->category_id) }}"><button class="btn btn-sm bg-danger text-white"><i class="fas fa-trash-alt"></i></button></a>
                  </td>
                 </tr>
               @endforeach
