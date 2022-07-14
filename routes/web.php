@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -52,6 +53,8 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
     Route::get('productEdit/{id}',[ProductController::class,'productEdit'])->name('productEdit');
     Route::post('editProduct/{id}',[ProductController::class,'editProduct'])->name('editProduct');
     Route::get('productsDelete/{id}',[ProductController::class,'productsDelete'])->name('productsDelete');
+    Route::get('adminOrderList',[AdminController::class,'adminOrderList'])->name('adminOrderList');
+    Route::get('adminContactList',[AdminController::class,'adminContactList'])->name('adminContactList');
 });
 
 // User Route group
@@ -66,5 +69,10 @@ Route::group(['prefix'=>'user','namespace'=>'User'],function(){
     Route::get('userPasswordChangePage',[UserController::class,'userPasswordChangePage'])->name('userPasswordChangePage');
     Route::post('userRealPasswordChange/{id}',[UserController::class,'userRealPasswordChange'])->name('userRealPasswordChange');
     Route::get('userMoreDetails/{id}',[UserController::class,'userMoreDetails'])->name('userMoreDetails');
+Route::post('userOrder/{id}',[OrderController::class,'userOrder'])->name('userOrder');
+Route::post('userSend/{id}',[UserController::class,'userSend'])->name('userSend');
+Route::get('userSearch',[UserController::class,'userSearch'])->name('userSearch');
+Route::get('userCategory/{id}',[UserController::class,'userCategory'])->name('userCategory');
+Route::get('userPriceSearch',[UserController::class,'userPriceSearch'])->name('userPriceSearch');
 
 });

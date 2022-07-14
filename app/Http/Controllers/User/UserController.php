@@ -4,8 +4,10 @@ namespace App\Http\Controllers\User;
 
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -15,13 +17,14 @@ class UserController extends Controller
         return view('User.index');
     }
     public function userHome(){
+        $category=Category::get();
         $data=Product::where('publish_status',1)->paginate(5);
         if(count($data)==0){
             $emptyStatus=0;
         }else{
             $emptyStatus=1;
         }
-        return view('User.userHome')->with(['productData'=>$data,'count'=>$emptyStatus]);
+        return view('User.userHome')->with(['productData'=>$data,'count'=>$emptyStatus,'category'=>$category]);
     }
 
 
@@ -86,13 +89,78 @@ class UserController extends Controller
     }
     public function userMoreDetails($id){
        $data=Product::where('products.id',$id)->get();
-        return view('User.userMoreDetails')->with(['productData'=>$data]);
+       $category=Category::first();
+    //    dd($category->toArray());
+        return view('User.userMoreDetails')->with(['productData'=>$data,'category'=>$category]);
+    }
+    public function userSend (Request $request){
+        $validator = Validator::make($request->all(), [
+          'name'=>'required',
+          'email'=>'required',
+          'message'=>'required',
+
+        ]);
+
+        if ($validator->fails()) {
+            return back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        $data=[
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'message'=>$request->message,
+        ];
+        Contact::create($data);
+        return back()->with(['contactSuccess'=>"Informations sent successfully!"]);
+
+    }
+    public function userSearch(Request $request){
+        $data=Product::where('product_name','like','%' . $request->userSearch . '%')->paginate(5);
+        $category=Category::get();
+        if(count($data)==0){
+          $emptyStatus=0;
+      }else{
+          $emptyStatus=1;
+      }
+        return view('User.userHome')->with(['productData'=>$data,'category'=>$category,'count'=>$emptyStatus]);
+    }
+    public function userCategory($id){
+ $data=Product::where('category_id',$id)
+ ->where('publish_status',1)
+ ->paginate(5);
+//  dd($data->toArray());
+ $category=Category::get();
+ if(count($data)==0){
+    $emptyStatus=0;
+}else{
+    $emptyStatus=1;
+}
+ return view('User.userHome')->with(['category'=>$category,'productData'=>$data,'count'=>$emptyStatus]);
+    }
+    public function userPriceSearch(Request $request){
+        $min=$request->minPrice;
+        $max=$request->maxPrice;
+        $query=Product::select('*');
+        if(!is_null($min) && is_null($max)){
+            $query=$query->where('price','>=',$min);
+        }else if(is_null($min) && !is_null($max)){
+            $query=$query->where('price','<=',$max);
+        }else if(!is_null($min) && !is_null($max)){
+            $query=$query->where('price','>=',$min)
+                         ->where('price','<=',$max);
+        }
+        $query=$query->paginate(5);
+        $query->appends($request->all());
+        $status=count($query) == 0 ? 0 : 1;
+        $category=Category::get();
+        return view('User.userHome')->with(['productData'=>$query,'category'=>$category,'count'=>$status]);
     }
     private function getUserData($request){
         return [
             'name'=>$request->name,
             'email'=>$request->email,
-            'role'=>$request->role,
+
         ];
     }
     private function userUpdate($request){

@@ -21,5 +21,6 @@ class Product extends Model
         'internal_storage',
         'front_camera',
         'back_camera',
+        // 'colors',
     ];
 }

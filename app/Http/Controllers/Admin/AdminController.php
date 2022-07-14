@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Order;
+use App\Models\Contact;
 use App\Models\Product;
 use App\Models\Category;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
@@ -53,8 +55,17 @@ return back()->with(['updateSuccess'=>"User Data Are Updated Successfully!!"]);
 
 
 
-
-
+public function adminOrderList(){
+    $data=Order::select('orders.*','products.id as product_id','products.product_name','users.name','users.id as user_id','products.category_id')
+    ->join('products','orders.product_id','products.id')
+    ->join('users','orders.customer_id','users.id')
+    ->paginate(5);
+return view('Admin.adminOrderList')->with(['order'=>$data]);
+}
+public function adminContactList(){
+ $data= Contact::paginate(5);
+    return view('Admin.adminContactShow')->with(['contact'=>$data]);
+}
 
 
 

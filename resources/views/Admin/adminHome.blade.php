@@ -36,6 +36,12 @@
           <li class="nav-item">
             <a href="{{ route('adminProductList') }}" class="nav-link">Products</a>
         </li>
+        <li class="nav-item">
+            <a href="{{ route('adminOrderList') }}" class="nav-link">Orders</a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('adminContactList') }}" class="nav-link">Contacts</a>
+        </li>
           <li class="nav-item">
             <form action="{{ route('logout') }}" method="POST">
                 @csrf

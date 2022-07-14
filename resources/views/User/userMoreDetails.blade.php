@@ -82,6 +82,12 @@ button:hover span:last-child {
         <a href="{{ route('userHome') }}" class="text-decoration-none text-dark "> <i class="fas fa-arrow-left"></i>Back</a>
 
         <div class="card mb-3 h-100" style="width: 270px;" >
+            @if (Session::has('orderSuccess'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ Session::get('orderSuccess') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              @endif
             @foreach ($productData as $item)
             <img src="{{ asset('uploads/' . $item->image) }}" class="card-img-top" alt="...">
             <div class="card-body">
@@ -94,9 +100,77 @@ button:hover span:last-child {
              <label for=""><b>Internal Storage</b> : </label> <label for=""><b>{{ $item->internal_storage }}</b> <b>GB</b></label><br><br>
              <label for=""><b>Front Camera </b>: </label> <label for=""><b>{{ $item->front_camera }}</b> <b>MP</b></label><br><br>
              <label for=""><b>Back Camera </b>: </label> <label for=""><b>{{ $item->back_camera }}</b> <b>MP</b></label><br><br>
+             <form action="{{ route('userOrder',$item->id) }}" method="POST">
+@if ($category->category_name=='Huawei')
+<select name="colors" id="" class="form-control">
+    <option value="">Choose Colors</option>
+    <option value="0">Red</option>
+    <option value="1">Forest Green</option>
+    <option value="2">Black</option>
+    <option value="3">White</option>
+    <option value="4">Gray</option>
+</select>
+@if ($errors->has('colors'))
+    <p class="text-danger">{{ $errors->first('colors') }}</p>
+@endif
 
 
-             <button><span class="text">Order Now</span><span>Thanks!</span></button>
+@endif
+@if ($category->category_name=='Samsung')
+
+<select name="colors" id="" class="form-control">
+    <option value="">Choose Colors</option>
+    <option value="0">Dark Cyan</option>
+    <option value="1">DarkGrey </option>
+    <option value="2">Black</option>
+    <option value="3">Indigo</option>
+    <option value="4">Gray</option>
+</select>
+@if ($errors->has('colors'))
+    <p class="text-danger">{{ $errors->first('colors') }}</p>
+@endif
+
+
+@endif
+@if ($category->category_name=='Apple')
+
+<select name="colors" id="" class="form-control">
+    <option value="">Choose Colors</option>
+    <option value="0">Cyan</option>
+    <option value="1">Gray </option>
+    <option value="2">Black</option>
+    <option value="3">White</option>
+    <option value="4">Dark Green</option>
+
+</select>
+@if ($errors->has('colors'))
+    <p class="text-danger">{{ $errors->first('colors') }}</p>
+@endif
+
+
+@endif
+@if ($category->category_name=='Xiaomi')
+
+<select name="colors" id="" class="form-control">
+    <option value="">Choose Colors</option>
+    <option value="0">Navy</option>
+    <option value="1">Light Sky</option>
+    <option value="2">Sky Blue</option>
+    <option value="3">Black</option>
+    <option value="4">Forest Green</option>
+</select>
+@if ($errors->has('colors'))
+    <p class="text-danger">{{ $errors->first('colors') }}</p>
+@endif
+
+
+@endif
+
+<br>
+
+              @csrf
+            <button type="submit"><span class="text">Order Now</span><span>Thanks!</span></button>
+          </form>
 
 
             </div>

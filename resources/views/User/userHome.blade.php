@@ -110,10 +110,10 @@ button:active {
           </li>
 
         </ul>
-        <form class="d-flex" role="search">
+        {{-- <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        </form> --}}
       </div>
     </div>
   </nav>
@@ -125,7 +125,7 @@ button:active {
         <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" id="code-lab-pizza" src="{{ asset('img/13 pro max.jpg') }}" alt="..." /></div>
         <div class="col-lg-5">
             <h1 class="font-weight-light">Oh So. Pro.</h1>
-            <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!</p>
+            <p>You Can Buy All Brands You Want!</p>
             <a class="btn btn-primary" href="#!">Enjoy!</a>
         </div>
     </div>
@@ -138,34 +138,34 @@ button:active {
             <div class="">
                 <div class="py-5 text-center">
 
-                    <form  method="GET" action="">
+                    <form  method="GET" action="{{ route('userSearch') }}">
                        @csrf
-                        <input class="form-control col-4" type="search" placeholder="Search" aria-label="Search" name="userCategorySearch"><br>
+                        <input class="form-control col-4" type="search" placeholder="Search" aria-label="Search" name="userSearch"><br>
                         <input type="submit" value="Search" class="btn bg-dark text-white">
 
                     </form>
 
-                    {{-- <div class="">
-                        <div class="m-2 p-2"><a href="{{ route('user') }}" class="text-decoration-none text-dark">All</a></div>
-                        @foreach ($categoryData as $item)
-                        <div class="m-2 p-2"><a href="{{ route('userCategory',$item->category_id) }}" class="text-decoration-none text-dark">{{ $item->category_name }}</a></div>
+                 <div class="">
+                        <div class="m-2 p-2"><a href="{{ route('userHome') }}" class="text-decoration-none text-dark">All</a></div>
+                        @foreach ($category as $item)
+                        <div class="m-2 p-2"><a href="{{ route('userCategory',$item->id) }}" class="text-decoration-none text-dark">{{ $item->category_name }}</a></div>
 
                         @endforeach
-                    </div> --}}
-                    {{-- <hr> --}}
-                    {{-- <div class="text-center m-4 p-2">
+                    </div>
+                <hr>
+                 {{-- <div class="text-center m-4 p-2">
                         <h3 class="mb-3">Start Date - End Date</h3>
 
                         <form>
                             <input type="date" name="" id="" class="form-control"> -
                             <input type="date" name="" id="" class="form-control">
                         </form>
-                    </div> --}}
-                    <hr>
+                    </div>
+                    <hr> --}}
                     <div class="text-center ml-2 p-2">
                         <h3 class="mb-3">Min - Max Amount</h3>
 
-                        <form method="GET" action="">
+                        <form method="GET" action="{{ route('userPriceSearch') }}">
                             @csrf
                             <input type="number" name="minPrice" id="" class="form-control" placeholder="minimum price" value="{{ old('minPrice') }}"> -
                             <input type="number" name="maxPrice" id="" class="form-control " placeholder="maximun price" value="{{ old('maxPrice') }}"><br>
@@ -201,7 +201,7 @@ button:active {
                        <div class="card-body p-4">
                            <div class="text-center">
                                <!-- Product name-->
-                               <h5 class="fw-bolder">{{ $item->pr }}</h5>
+                               <h5 class="fw-bolder">{{ $item->product_name }}</h5>
                                <!-- Product price-->
                                <span class="text-muted text-decoration-line-through">{{ $item->price }}</span> {{ $item->price - $item->discount_price }}
                                <span class="fs-5"> <b>MMK</b></span>
@@ -280,5 +280,37 @@ button:active {
         </div>
     </div>
 </div>
+<form action="{{ route('userSend',auth()->user()->id) }}" class="my-4" method="POST">
+    @csrf
+<div class="text-center d-flex justify-content-center align-items-center" id="contact">
+
+    <div class="col-8 border shadow-sm ps-5 pt-5 pe-5 pb-2 mb-5">
+        @if (Session::has('contactSuccess'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ Session::get('contactSuccess') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif
+        <h3>Contact Us</h3>
+
+
+
+            <input type="text" name="name" id="" class="form-control my-3" placeholder="Name">
+            @if ($errors->has('name'))
+            <p class="text-danger">{{ $errors->first('name') }}</p>
+        @endif
+            <input type="text" name="email" id="" class="form-control my-3" placeholder="Email">
+            @if ($errors->has('email'))
+            <p class="text-danger">{{ $errors->first('email') }}</p>
+        @endif
+            <textarea class="form-control my-3" id="exampleFormControlTextarea1"  rows="3" placeholder="Message" name="message" style="resize: none"></textarea>
+            @if ($errors->has('message'))
+            <p class="text-danger">{{ $errors->first('message') }}</p>
+        @endif
+        <input type="submit" value="Send" class="btn bg-dark text-white">
+        </form>
+    </div>
+</div>
+
 </body>
 </html>

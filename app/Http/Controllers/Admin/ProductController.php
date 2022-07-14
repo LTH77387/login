@@ -41,6 +41,7 @@ class ProductController extends Controller
                         ->withErrors($validator)
                         ->withInput();
         }
+        // dd($request->all());
         $file=$request->file('image');
         $fileName=uniqid() . '_' . $file->getClientOriginalName();
 
@@ -81,6 +82,7 @@ class ProductController extends Controller
             'storage'=>'required',
             'frontCamera'=>'required',
             'backCamera'=>'required',
+
 
         ]);
 
@@ -141,6 +143,7 @@ private function requestPizzaData($request,$fileName){
         'internal_storage'=>$request->storage,
         'front_camera'=>$request->frontCamera,
         'back_camera'=>$request->backCamera,
+
     ];
     }
     private function reqData($request){
@@ -157,6 +160,8 @@ private function requestPizzaData($request,$fileName){
             'internal_storage'=>$request->storage,
             'front_camera'=>$request->frontCamera,
             'back_camera'=>$request->backCamera,
+
+
         ];
 
          if(isset($request->image)){

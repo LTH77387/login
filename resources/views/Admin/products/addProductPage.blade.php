@@ -11,6 +11,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
 <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+
 </head>
 <body>
     <section class="content">
@@ -157,6 +158,15 @@
                                 @endif
                               </div>
                           </div>
+
+                          <select class="form-select" multiple size="4"  multiple aria-label="multiple select example" name="colors">
+                            <option value="1">Forest Green</option>
+                            <option value="2">White</option>
+                            <option value="3">Light Blue</option>
+                            <option value="4">Black</option>
+
+                          </select>
+
                           <div class="form-group row">
                             <div class="offset-sm-2 col-sm-10">
                              <input type="submit" value="Add" class="btn bg-dark text-white">

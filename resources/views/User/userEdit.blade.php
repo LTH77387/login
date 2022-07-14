@@ -69,7 +69,7 @@
                           <input name="password" type="password" class="form-control" placeholder="Password" value="{{ old('password',$profileShow->password )}}">
                         </div>
                       </div> --}}
-                      <div class="form-group row">
+                      {{-- <div class="form-group row">
                         <label for="inputEmail" class="col-sm-2 col-form-label">Role</label>
                         <div class="col-sm-10">
                           <input type="text" class="form-control"  name="role" value="{{ old('role',$userEdit->role ) }}"><br>
@@ -77,8 +77,8 @@
                           <p class="text-danger">{{ $errors->first('email') }}</p>
 
                           @endif --}}
-                        </div>
-                      </div>
+              {{-- </div>
+                      </div> --}}
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
                           <a href="{{ route('userPasswordChangePage') }}">Change Password</a>
