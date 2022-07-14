@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -37,19 +39,19 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
     Route::get('userProfileEdit/{id}',[AdminController::class,'userProfileEdit'])->name('userProfileEdit');
     Route::get('adminProfileEdit/{id}',[AdminController::class,'adminProfileEdit'])->name('adminProfileEdit');
     Route::post('adminProfileUpdate/{id}',[AdminController::class,'adminProfileUpdate'])->name('adminProfileUpdate');
-    Route::get('adminCategoryPage',[AdminController::class,'adminCategoryPage'])->name('adminCategoryPage');
-    Route::get('addCategory',[AdminController::class,'addCategory'])->name('addCategory');
-    Route::post('categoryAdd',[AdminController::class,'categoryAdd'])->name('categoryAdd');
-    Route::get('adminProductList',[AdminController::class,'adminProductList'])->name('adminProductList');
-    Route::get('addProductPage',[AdminController::class,'addProductPage'])->name('addProductPage');
-    Route::post('adminCategoryAdd',[AdminController::class,'adminCategoryAdd'])->name('adminCategoryAdd');
-    Route::get('productListAdmin/{id}',[AdminController::class,'productListAdmin'])->name('productListAdmin');
-    Route::get('categoryDelete/{id}',[AdminController::class,'categoryDelete'])->name('categoryDelete');
-    Route::get('categoryUpdate/{id}',[AdminController::class,'categoryUpdate'])->name('categoryUpdate');
-    Route::post('categoryEdit/{id}',[AdminController::class,'categoryEdit'])->name('categoryEdit');
-    Route::get('productEdit/{id}',[AdminController::class,'productEdit'])->name('productEdit');
-    Route::post('editProducts/{id}',[AdminController::class,'editProducts'])->name('editProducts');
-    Route::get('productsDelete/{id}',[AdminController::class,'productsDelete'])->name('productsDelete');
+    Route::get('adminCategoryPage',[CategoryController::class,'adminCategoryPage'])->name('adminCategoryPage');
+    Route::get('addCategory',[CategoryController::class,'addCategory'])->name('addCategory');
+    Route::post('categoryAdd',[CategoryController::class,'categoryAdd'])->name('categoryAdd');
+    Route::get('adminProductList',[ProductController::class,'adminProductList'])->name('adminProductList');
+    Route::get('addProductPage',[ProductController::class,'addProductPage'])->name('addProductPage');
+    Route::post('adminCategoryAdd',[ProductController::class,'adminCategoryAdd'])->name('adminCategoryAdd');
+    Route::get('productListAdmin/{id}',[ProductController::class,'productListAdmin'])->name('productListAdmin');
+    Route::get('categoryDelete/{id}',[CategoryController::class,'categoryDelete'])->name('categoryDelete');
+    Route::get('categoryUpdate/{id}',[CategoryController::class,'categoryUpdate'])->name('categoryUpdate');
+    Route::post('categoryEdit/{id}',[CategoryController::class,'categoryEdit'])->name('categoryEdit');
+    Route::get('productEdit/{id}',[ProductController::class,'productEdit'])->name('productEdit');
+    Route::post('editProduct/{id}',[ProductController::class,'editProduct'])->name('editProduct');
+    Route::get('productsDelete/{id}',[ProductController::class,'productsDelete'])->name('productsDelete');
 });
 
 // User Route group

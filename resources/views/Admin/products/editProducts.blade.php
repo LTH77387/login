@@ -38,7 +38,7 @@
                   <div class="card-body">
                     <div class="tab-content">
                       <div class="active tab-pane" id="activity">
-                        <form class="form-horizontal" method="POST" action="{{ route('editProducts',$edit->product_id) }}" enctype="multipart/form-data">
+                        <form class="form-horizontal" method="POST" action="{{ route('editProduct',$edit->product_id) }}" enctype="multipart/form-data">
                             @csrf
                           <div class="form-group row">
                             <label for="inputName" class="col-sm-2 col-form-label">Product Name</label>
@@ -91,10 +91,10 @@
                                     {{-- <option value="">Choose Options...</option> --}}
                                     @foreach ($create as $item)
 
-                                      @if ($item->category_id != $edit->category_id)
-                                      <option value="{{ $item->category_id }}" >{{ $item->category_name }}</option>
+                                      @if ($item->category_id != $edit->id)
+                                      <option value="{{ $item->id }}" >{{ $item->category_name }}</option>
                                       @else{
-                                        <option value="{{ $item->category_id }}" selected>{{ $item->category_name }}</option>
+                                        <option value="{{ $item->id }}" selected>{{ $item->category_name }}</option>
                                       }
                                       @endif
                                     @endforeach
@@ -116,20 +116,57 @@
                           <div class="form-group row">
                             <label  class="col-sm-2 col-form-label">Waiting Time</label>
                             <div class="col-sm-10">
-                              <input type="number" class="form-control" id="inputName" placeholder="Product Price" name="waitingTime" value="{{ old('waitingTime',$edit->waiting_time) }}" ><br>
+                              <input type="number" class="form-control" id="inputName"  name="waitingTime" value="{{ old('waitingTime',$edit->waiting_time) }}" ><br>
                               @if ($errors->has('waitingTime'))
                                   <p class="text-danger">{{ $errors->first('waitingTime') }}</p>
                               @endif
                             </div>
                           </div>
                           <div class="form-group row">
-                            <label  class="col-sm-2 col-form-label">Description</label>
+                            <label  class="col-sm-2 col-form-label">Ram : </label>
                             <div class="col-sm-10">
-                            <textarea name="description" id="" cols="20" rows="10" class="form-control" style="resize: none">{{ old('description',$edit->description) }}</textarea>
-                              @if ($errors->has('description'))
-                                  <p class="text-danger">{{ $errors->first('description') }}</p>
+                              <input type="number" class="form-control" id="inputName"  name="ram" value="{{ old('ram',$edit->ram) }}" ><br>
+                              @if ($errors->has('ram'))
+                                  <p class="text-danger">{{ $errors->first('ram') }}</p>
                               @endif
                             </div>
+                            <div class="form-group row">
+                                <label  class="col-sm-2 col-form-label">Battery</label>
+                                <div class="col-sm-10">
+                                  <input type="number" class="form-control" id="inputName" name="battery" value="{{ old('battery',$edit->battery) }}" ><br>
+                                  @if ($errors->has('battery'))
+                                      <p class="text-danger">{{ $errors->first('battery') }}</p>
+                                  @endif
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label  class="col-sm-2 col-form-label">Internal Storage</label>
+                                <div class="col-sm-10">
+                                  <input type="number" class="form-control" id="inputName" name="storage" value="{{ old('storage',$edit->internal_storage) }}" ><br>
+                                  @if ($errors->has('storage'))
+                                      <p class="text-danger">{{ $errors->first('storage') }}</p>
+                                  @endif
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label  class="col-sm-2 col-form-label">Front Camera</label>
+                                <div class="col-sm-10">
+                                  <input type="number" class="form-control" id="inputName"  name="frontCamera" value="{{ old('frontCamera',$edit->front_camera) }}" ><br>
+                                  @if ($errors->has('frontCamera'))
+                                      <p class="text-danger">{{ $errors->first('frontCamera') }}</p>
+                                  @endif
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label  class="col-sm-2 col-form-label">Back Camera</label>
+                                <div class="col-sm-10">
+                                  <input type="number" class="form-control" id="inputName"  name="backCamera" value="{{ old('frontCamera',$edit->back_camera) }}" ><br>
+                                  @if ($errors->has('backCamera'))
+                                      <p class="text-danger">{{ $errors->first('backCamera') }}</p>
+                                  @endif
+                                </div>
+                              </div>
+                          </div>
                           </div>
                           <div class="form-group row">
                             <div class="offset-sm-2 col-sm-10">

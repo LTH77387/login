@@ -86,9 +86,14 @@ button:hover span:last-child {
             <img src="{{ asset('uploads/' . $item->image) }}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{ $item->product_name }}</h5>
-             <label for="">Price: </label> <label for="">{{ $item->price }} MMK</label><br>
-             <label for="">Discount Price: </label> <label for="">{{ $item->discount_price }} MMK</label><br>
-             <label for="">Waiting Time: </label> <label for="">{{ $item->waiting_time }} Days</label><br><br>
+             <label for=""><b>Price</b>: </label> <label for=""><b>{{ $item->price }}</b> <b>MMK</b></label><br><br>
+             <label for=""><b>Discount Price</b>: </label> <label for=""><b>{{ $item->discount_price }}</b> <b>MMK</b></label><br><br>
+             <label for=""><b>Waiting Time</b>: </label> <label for=""><b>{{ $item->waiting_time }}</b> <b>Days</b></label><br><br>
+             <label for=""><b>Ram</b>: </label> <label for=""><b>{{ $item->ram }} </b></label><br><br>
+             <label for=""><b>Battery</b> : </label> <label for=""><b>{{ $item->battery }}</b> <b>MAH</b></label><br><br>
+             <label for=""><b>Internal Storage</b> : </label> <label for=""><b>{{ $item->internal_storage }}</b> <b>GB</b></label><br><br>
+             <label for=""><b>Front Camera </b>: </label> <label for=""><b>{{ $item->front_camera }}</b> <b>MP</b></label><br><br>
+             <label for=""><b>Back Camera </b>: </label> <label for=""><b>{{ $item->back_camera }}</b> <b>MP</b></label><br><br>
 
 
              <button><span class="text">Order Now</span><span>Thanks!</span></button>

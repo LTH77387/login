@@ -89,12 +89,12 @@
 
                 @if ($productList->total()==0)
                   <tr>
-                    <td colspan="4" class="text-muted">There is no result.</td>
+                    <td colspan="5" class="text-muted">There is no result.</td>
                   </tr>
                 @else
                 @foreach ($productList as $item)
                 <tr>
-               <td>{{ $item->product_id }}</td>
+               <td>{{ $item->id }}</td>
                <td>{{ $item->product_name }}</td>
                <td>                    <img src="{{ asset('/uploads/' . $item->image) }}" class="img-thumbnail" width="150px" height="200px">
                </td>
@@ -110,9 +110,9 @@
                     @endif
                 </td>
                   <td>
-                      <a href="{{ route('productListAdmin',$item->product_id) }}"><button class="btn btn-sm bg-dark text-white"><i class="fa fa-eye"></i></button></a>
-                 <a href="{{ route('productEdit',$item->product_id) }}">  <button class="btn btn-sm bg-dark text-white"><i class="fas fa-edit"></i></button></a>
-                   <a href="{{ route('productsDelete',$item->product_id) }}"><button class="btn btn-sm bg-danger text-white"><i class="fas fa-trash-alt"></i></button></a>
+                      <a href="{{ route('productListAdmin',$item->id) }}"><button class="btn btn-sm bg-dark text-white"><i class="fa fa-eye"></i></button></a>
+                 <a href="{{ route('productEdit',$item->id) }}">  <button class="btn btn-sm bg-dark text-white"><i class="fas fa-edit"></i></button></a>
+                   <a href="{{ route('productsDelete',$item->id) }}"><button class="btn btn-sm bg-danger text-white"><i class="fas fa-trash-alt"></i></button></a>
                  </td>
                 </tr>
               @endforeach

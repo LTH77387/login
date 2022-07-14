@@ -37,7 +37,7 @@
                   <div class="card-body">
                     <div class="tab-content">
                       <div class="active tab-pane" id="activity">
-                        <form class="form-horizontal" method="POST" action="{{ route('categoryEdit',$categoryData->category_id) }}">
+                        <form class="form-horizontal" method="POST" action="{{ route('categoryEdit',$categoryData->id) }}">
                             @csrf
                           <div class="form-group row">
                             <label for="inputName" class="col-sm-2 col-form-label">Category Name</label>

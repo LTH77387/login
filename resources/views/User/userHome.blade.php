@@ -211,7 +211,7 @@ button:active {
                       <div class="" id="btn">
                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                            {{-- <div class="text-center"><button  class="btn btn-outline-dark mt-auto">Add To Cart</button></div><br> --}}
-                      <a href="{{ route('userMoreDetails',$item->product_id) }}" class="text-decoration-none">
+                      <a href="{{ route('userMoreDetails',$item->id) }}" class="text-decoration-none">
                         <button>
                             <span>More Datails</span>
                             <svg width="34" height="34" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">

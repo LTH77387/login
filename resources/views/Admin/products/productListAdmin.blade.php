@@ -42,25 +42,36 @@
                     </div>
                         <div class="text-center">
                             <div class="">
-                                <label>Pizza Name:</label> <label>{{ $productList->product_name }}</label>
-                            </div>
-                            <div class="">
-                                <label>Description:</label> <label>{{ $productList->description }}</label>
+                                <label>Product Name:</label> <label>{{ $productList->product_name }}</label>
                             </div>
                             <div class="">
                                 <label>Price:</label> <label>{{ $productList->price }}</label>
                             </div>
                             <div class="">
-                                <label>Category ID:</label> <label>{{ $productList->category_id }}</label>
+                                <label>Category ID:</label> <label>{{ $category->category_id }}</label>
                             </div>
                             <div class="">
                                 <label>Waiting Time:</label> <label> {{ $productList->waiting_time }} Days</label>
                             </div>
                             <div class="">
-                                <label>Discount:</label> <label> {{ $productList->discount_price }}MMK</label>
+                                <label>Discount:</label> <label> {{ $productList->discount_price }} MMK</label>
+                            </div>
+                            <div class="">
+                                <label>Ram:</label> <label> {{ $productList->ram}}</label>
+                            </div>
+                            <div class="">
+                                <label>Battery:</label> <label> {{ $productList->battery }} MAH</label>
+                            </div>
+                            <div class="">
+                                <label>Internal Storage:</label> <label> {{ $productList->internal_storage }} MMK</label>
                             </div>
 
-
+                            <div class="">
+                                <label>Front Camera:</label> <label> {{ $productList->front_camera }} MP</label>
+                            </div>
+                            <div class="">
+                                <label>Back Camera:</label> <label> {{ $productList->back_camera }} MP</label>
+                            </div>
                         </div>
                       </div>
                       </div>

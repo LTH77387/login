@@ -16,6 +16,10 @@ class Product extends Model
         'category_id',
         'discount_price',
         'waiting_time',
-        'description',
+        'ram',
+        'battery',
+        'internal_storage',
+        'front_camera',
+        'back_camera',
     ];
 }

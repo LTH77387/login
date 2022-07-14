@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id('product_id');
+            $table->id();
             $table->string('product_name');
             $table->string('image');
             $table->integer('price');
@@ -22,7 +22,11 @@ return new class extends Migration
             $table->integer('category_id');
             $table->integer('discount_price');
             $table->integer('waiting_time');
-            $table->longText('description');
+            $table->integer('ram');
+            $table->integer('battery');
+            $table->integer('internal_storage');
+            $table->integer('front_camera');
+            $table->integer('back_camera');
             $table->timestamps();
         });
     }

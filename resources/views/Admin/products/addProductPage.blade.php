@@ -85,7 +85,7 @@
                                 <option value="">Choose Option...</option>
                             @foreach ($create as $item)
 
-                           <option value="{{ $item->category_id }}">{{ $item->category_name }}</option>
+                           <option value="{{ $item->id }}">{{ $item->category_name }}</option>
 
                             @endforeach
                           </select>
@@ -107,19 +107,55 @@
                             <label  class="col-sm-2 col-form-label">Waiting Time</label>
                             <div class="col-sm-10">
                               <input type="number" class="form-control" id="inputName" placeholder="Product Price" name="waitingTime" ><br>
-                              @if ($errors->has('image'))
+                              @if ($errors->has('waitingTime'))
                                   <p class="text-danger">{{ $errors->first('waitingTime') }}</p>
                               @endif
                             </div>
                           </div>
                           <div class="form-group row">
-                            <label  class="col-sm-2 col-form-label">Description</label>
+                            <label  class="col-sm-2 col-form-label">Ram:</label>
                             <div class="col-sm-10">
-                            <textarea name="description" id="" cols="20" rows="10" class="form-control" style="resize: none"></textarea>
-                              @if ($errors->has('image'))
-                                  <p class="text-danger">{{ $errors->first('description') }}</p>
-                              @endif
-                            </div>
+                                <input type="number" class="form-control" id="inputName" placeholder="Ram" name="ram" ><br>
+                                @if ($errors->has('ram'))
+                                    <p class="text-danger">{{ $errors->first('ram') }}</p>
+                                @endif
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Battery:</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" id="inputName" placeholder="Battery" name="battery" ><br>
+                                @if ($errors->has('battery'))
+                                    <p class="text-danger">{{ $errors->first('battery') }}</p>
+                                @endif
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Internal Storage:</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" id="inputName" placeholder="Internal Storage" name="storage" ><br>
+                                @if ($errors->has('storage'))
+                                    <p class="text-danger">{{ $errors->first('storage') }}</p>
+                                @endif
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Front Camera:</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" id="inputName" placeholder="Front Camera" name="frontCamera" ><br>
+                                @if ($errors->has('frontCamera'))
+                                    <p class="text-danger">{{ $errors->first('frontCamera') }}</p>
+                                @endif
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Back Camera:</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" id="inputName" placeholder="Back Camera" name="backCamera" ><br>
+                                @if ($errors->has('backCamera'))
+                                    <p class="text-danger">{{ $errors->first('backCamera') }}</p>
+                                @endif
+                              </div>
                           </div>
                           <div class="form-group row">
                             <div class="offset-sm-2 col-sm-10">
