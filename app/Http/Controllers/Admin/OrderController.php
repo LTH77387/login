@@ -31,8 +31,9 @@ return back()->with(['orderSuccess'=>"Your Order is submitted succesfully!.Pleas
 private function reqUserData($request,$userId,$id){
     return [
         'customer_id'=>$userId,
-        'colors'=>$request->colors,
         'product_id'=>$id,
+        'colors'=>$request->colors,
+
     ];
 }
 }
