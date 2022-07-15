@@ -19,6 +19,8 @@ class UserController extends Controller
     public function userHome(){
         $category=Category::get();
         $data=Product::where('publish_status',1)->paginate(5);
+
+        // dd($data->toArray());
         if(count($data)==0){
             $emptyStatus=0;
         }else{
@@ -88,9 +90,10 @@ class UserController extends Controller
         }
     }
     public function userMoreDetails($id){
-       $data=Product::where('products.id',$id)->first();
+       $data=Product::where('products.id',$id)->get();
        $category=Category::first();
     //    dd($category->toArray());
+    // dd($data->toArray());
         return view('User.userMoreDetails')->with(['productData'=>$data,'category'=>$category]);
     }
     public function userSend (Request $request){
