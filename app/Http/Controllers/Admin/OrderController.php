@@ -23,7 +23,7 @@ class OrderController extends Controller
 
 $data=$this->reqUserData($request,$userId,$id);
 Order::create($data);
-return back()->with(['orderSuccess'=>"Your Order is submitted succesfully!.Please Wait 3 weeks"]);
+return view('User.userMoreDetails')->with(['orderSuccess'=>"Your Order is submitted succesfully!.Please Wait 3 weeks"]);
 
 
 
