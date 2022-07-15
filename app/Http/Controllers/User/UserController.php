@@ -88,7 +88,7 @@ class UserController extends Controller
         }
     }
     public function userMoreDetails($id){
-       $data=Product::where('products.id',$id)->get();
+       $data=Product::where('products.id',$id)->first();
        $category=Category::first();
     //    dd($category->toArray());
         return view('User.userMoreDetails')->with(['productData'=>$data,'category'=>$category]);
