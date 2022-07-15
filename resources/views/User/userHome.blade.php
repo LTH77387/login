@@ -137,7 +137,7 @@ button:active {
     <!-- Content Row-->
     <div class="d-flex justify-content-around">
 
-        <div class="col-4 me-6">
+        <div class="col-4 me-5">
 
             <div class="">
                 <div class="py-5 text-center">
