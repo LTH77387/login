@@ -31,9 +31,8 @@ return view('User.userMoreDetails')->with(['orderSuccess'=>"Your Order is submit
 private function reqUserData($request,$userId,$id){
     return [
         'customer_id'=>$userId,
-        'product_id'=>$id,
         'colors'=>$request->colors,
-
+        'product_id'=>$id,
     ];
 }
 }
