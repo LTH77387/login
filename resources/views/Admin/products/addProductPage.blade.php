@@ -159,13 +159,13 @@
                               </div>
                           </div>
 
-                          <select class="form-select" multiple size="4"  multiple aria-label="multiple select example" name="colors">
+                          {{-- <select class="form-select" multiple size="4"  multiple aria-label="multiple select example" name="">
                             <option value="1">Forest Green</option>
                             <option value="2">White</option>
                             <option value="3">Light Blue</option>
                             <option value="4">Black</option>
 
-                          </select>
+                          </select> --}}
 
                           <div class="form-group row">
                             <div class="offset-sm-2 col-sm-10">

@@ -160,6 +160,8 @@ class UserController extends Controller
         return [
             'name'=>$request->name,
             'email'=>$request->email,
+            'address'=>$request->address,
+            'phone'=>$request->phone,
 
         ];
     }

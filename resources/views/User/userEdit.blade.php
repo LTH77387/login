@@ -63,6 +63,26 @@
                           @endif --}}
                         </div>
                       </div>
+                      <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label">Address</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" name="address" value="{{ old('name',$userEdit->address) }}"><br>
+                          {{-- @if ($errors->has('name'))
+                          <p class="text-danger">{{ $errors->first('name') }}</p>
+
+                          @endif --}}
+                        </div>
+                      </div>
+                               <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label">Phone</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" name="phone" value="{{ old('name',$userEdit->phone) }}"><br>
+                          {{-- @if ($errors->has('name'))
+                          <p class="text-danger">{{ $errors->first('name') }}</p>
+
+                          @endif --}}
+                        </div>
+                      </div>
                       {{-- <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
                         <div class="col-sm-10">

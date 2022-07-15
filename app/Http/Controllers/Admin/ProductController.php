@@ -109,7 +109,7 @@ $updateData=$this->reqData($request);
 
             $file->move(public_path() . '/uploads/' , $fileName);
 
-            $arr['image']=$fileName;
+            $updateData['image']=$fileName;
 
             Product::where('products.id',$id)->update($updateData);
     return back()->with(['updatePizzaData'=>"Pizza data updated successfully!"]);
