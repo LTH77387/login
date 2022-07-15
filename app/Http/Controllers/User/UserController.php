@@ -154,7 +154,7 @@ class UserController extends Controller
         $query->appends($request->all());
         $status=count($query) == 0 ? 0 : 1;
         $category=Category::get();
-        return view('User.userHome')->with(['productData'=>$query,'category'=>$category,'count'=>$status]);
+        return back()->with(['productData'=>$query,'category'=>$category,'count'=>$status]);
     }
     private function getUserData($request){
         return [
